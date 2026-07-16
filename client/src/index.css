@@ -1,0 +1,93 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  /* Atmospheric backdrop: layered radial glows over deep ink, evoking a
+     bio-analysis lab rather than a flat dashboard. */
+  background-color: #060912;
+  background-image:
+    radial-gradient(60rem 60rem at 12% -10%, rgba(45, 212, 191, 0.14), transparent 55%),
+    radial-gradient(50rem 50rem at 100% 0%, rgba(249, 115, 98, 0.1), transparent 50%),
+    radial-gradient(45rem 45rem at 50% 118%, rgba(96, 165, 250, 0.1), transparent 55%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Fine dot-grid overlay for subtle depth and a "lab surface" texture. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(rgba(148, 163, 196, 0.07) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Slow drifting aurora used by the animated backdrop component. */
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 196, 0.28);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 212, 191, 0.4);
+}
+
+::selection {
+  background: rgba(45, 212, 191, 0.28);
+}
