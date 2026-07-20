@@ -101,7 +101,7 @@ export default function HomePage() {
             }}
           >
             Enter a GitHub username and DevDNA analyzes their public work into a
-            living developer profile — scores, languages, and AI insights.
+            living developer profile — scores, languages, and AI insights. More if you pay!!
           </Typography>
         </MotionBox>
 
