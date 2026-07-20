@@ -100,7 +100,7 @@ export default function HomePage() {
               fontSize: { xs: '1.05rem', md: '1.2rem' },
             }}
           >
-            LOLOLEnter a GitHub username and DevDNA analyzes their public work into a
+            Enter a GitHub username and DevDNA analyzes their public work into a
             living developer profile — scores, languages, and AI insights.
           </Typography>
         </MotionBox>
