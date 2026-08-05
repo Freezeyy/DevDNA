@@ -34,6 +34,11 @@ services:
       DB_PORT: 3306
       CLIENT_ORIGIN: ${CLIENT_ORIGIN}
 
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      GEMINI_MODEL: ${GEMINI_MODEL}
+      CACHE_TTL_MINUTES: ${CACHE_TTL_MINUTES}
+
 
   frontend:
     build:
