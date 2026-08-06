@@ -1,0 +1,18 @@
+services:
+  backend:
+    image: devdna/backend:prod
+
+    build:
+      context: ./server
+
+    environment:
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN}
+
+  frontend:
+    image: devdna/frontend:prod
+
+    build:
+      context: ./client
+
+    ports:
+      - "8080:80"
