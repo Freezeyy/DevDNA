@@ -8,7 +8,6 @@ services:
     security_opt:
       - seccomp:unconfined
 
-
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -25,7 +24,12 @@ services:
       retries: 10
 
   backend:
+    image: ghcr.io/freezeyy/devdna-backend:latest
+    platform: linux/arm64
     container_name: devdna-backend
+
+    security_opt:
+      - seccomp:unconfined
 
     depends_on:
       mysql:
@@ -47,7 +51,12 @@ services:
     restart: always
 
   frontend:
+    image: ghcr.io/freezeyy/devdna-frontend:latest
+    platform: linux/arm64
     container_name: devdna-frontend
+
+    security_opt:
+      - seccomp:unconfined
 
     depends_on:
       - backend
