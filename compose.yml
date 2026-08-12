@@ -28,6 +28,9 @@ services:
     platform: linux/arm64
     container_name: devdna-backend
 
+    ports:
+      - "4000:4000"
+
     security_opt:
       - seccomp:unconfined
 
