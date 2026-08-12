@@ -1,6 +1,7 @@
 services:
   mysql:
     image: mysql:8
+    platform: linux/arm64
     container_name: devdna-mysql
     restart: always
 
