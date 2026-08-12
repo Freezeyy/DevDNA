@@ -1,18 +1,12 @@
 services:
   backend:
-    image: devdna/backend:prod
-
-    build:
-      context: ./server
+    image: ghcr.io/Freezeyy/devdna-backend:latest
 
     environment:
       CLIENT_ORIGIN: ${CLIENT_ORIGIN}
 
   frontend:
-    image: devdna/frontend:prod
-
-    build:
-      context: ./client
+    image: ghcr.io/Freezeyy/devdna-frontend:latest
 
     ports:
       - "8080:80"
