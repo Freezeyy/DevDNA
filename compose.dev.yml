@@ -1,0 +1,32 @@
+services:
+  backend:
+    image: devdna/backend:dev
+
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+
+    command: npm run dev
+
+    environment:
+      CLIENT_ORIGIN: http://localhost:5173
+
+    volumes:
+      - ./server:/server
+      - /server/node_modules
+
+  frontend:
+    image: devdna/frontend:dev
+
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+
+    command: npm run dev -- --host
+
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+
+    ports:
+      - "5173:5173"

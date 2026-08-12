@@ -1,0 +1,53 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: devdna-mysql
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+    volumes:
+      - devdna-db-data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    container_name: devdna-backend
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      GEMINI_MODEL: ${GEMINI_MODEL}
+
+      CACHE_TTL_MINUTES: ${CACHE_TTL_MINUTES}
+
+    restart: always
+
+  frontend:
+    container_name: devdna-frontend
+
+    depends_on:
+      - backend
+
+    restart: always
+
+volumes:
+  devdna-db-data:
