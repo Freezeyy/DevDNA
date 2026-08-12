@@ -1,12 +1,14 @@
 services:
   backend:
     image: ghcr.io/freezeyy/devdna-backend:latest
+    platform: linux/arm64
 
     environment:
       CLIENT_ORIGIN: ${CLIENT_ORIGIN}
 
   frontend:
     image: ghcr.io/freezeyy/devdna-frontend:latest
+    platform: linux/arm64
 
     ports:
       - "8080:80"
