@@ -36,6 +36,7 @@ services:
         condition: service_healthy
 
     environment:
+      NODE_ENV: production
       DB_HOST: mysql
       DB_PORT: 3306
       DB_NAME: ${MYSQL_DATABASE}
